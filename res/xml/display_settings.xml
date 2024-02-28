@@ -213,12 +213,14 @@
             settings:requiresConfig="@*lineageos.platform:bool/config_dt2sGestureAvailable" />
 
         <!-- Lid event wake/sleep -->
-        <lineageos.preference.LineageSystemSettingSwitchPreference
-            android:key="lid_control_sleep"
-            android:title="@string/lid_control_sleep_title"
-            android:summary="@string/lid_control_sleep_summary"
-            android:defaultValue="true"
-            settings:requiresConfig="@*lineageos.platform:bool/config_enableLidControls" />
+        <ListPreference
+            android:key="lid_behaviour"
+            android:title="@string/lid_behaviour_title"
+            android:summary="@string/lid_behaviour_summary"
+            android:entries="@array/lid_behaviour_entries"
+            android:entryValues="@array/lid_behaviour_values"
+            android:dialogTitle="@string/lid_behaviour_title"
+            settings:controller="com.android.settings.display.LidBehaviourPreferenceController" />
 
         <lineageos.preference.LineageGlobalSettingSwitchPreference
             android:key="wake_when_plugged_or_unplugged"
