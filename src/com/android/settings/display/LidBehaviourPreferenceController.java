@@ -55,23 +55,22 @@ public class LidBehaviourPreferenceController extends BasePreferenceController
 
     @Override
     public void displayPreference(PreferenceScreen screen) {
-        super.displayPreference(screen);
         mListPreference = screen.findPreference(getPreferenceKey());
         mListPreference.setOnPreferenceChangeListener(this);
+        super.displayPreference(screen);
     }
 
     @Override
     public void updateState(Preference preference) {
         int curLidBehaviour = Settings.Global.getInt(mContext.getContentResolver(),
-        Settings.Global.LID_BEHAVIOR, LID_BEHAVIOR_NONE);
-
+        			Settings.Global.LID_BEHAVIOR, LID_BEHAVIOR_NONE);
         mListPreference.setValue(Integer.toString(curLidBehaviour));
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Settings.Global.putInt(mContext.getContentResolver(), Settings.Global.LID_BEHAVIOR,
-        	Integer.valueOf((String) newValue));
+             Integer.valueOf((String) newValue));
         updateState(preference);
         return true;
     }
